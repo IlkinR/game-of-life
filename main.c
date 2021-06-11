@@ -32,6 +32,24 @@ int getTotalNeighboursCount(Universe universe, int rowInput, int colInput)
     return neighboursCount;
 }
 
+void makeLifeProgress(Universe universeInput)
+{
+    Universe currentCreatedUniverse;
+
+    for (int i = 0; i < MAX_ROWS_COUNT; i++)
+    {
+        for (int j = 0; j < MAX_COLUMNS_COUNT; j++)
+        {
+            int numberOfNeighbours = getTotalNeighboursCount(universeInput, i, j);
+
+            bool firstLifeFilter = numberOfNeighbours == 3;
+            bool secondLifeFilter = universeInput[i][j] && numberOfNeighbours == 2;
+
+            currentCreatedUniverse[i][j] = firstLifeFilter || secondLifeFilter;
+        }
+    }
+}
+
 int main() {
    return 0;
 }
