@@ -48,6 +48,15 @@ void makeLifeProgress(Universe universeInput)
             currentCreatedUniverse[i][j] = firstLifeFilter || secondLifeFilter;
         }
     }
+
+    for (int row = 0; row < MAX_ROWS_COUNT; row++)
+    {
+        for (int col = 0; col < MAX_COLUMNS_COUNT; col++)
+        {
+            int cell = currentCreatedUniverse[row][col];
+            universeInput[row][col] = cell;
+        };
+    }
 }
 
 int main() {
