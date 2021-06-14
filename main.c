@@ -59,6 +59,39 @@ void makeLifeProgress(Universe universeInput)
     }
 }
 
+void displayUniverse(Universe universeInput)
+{
+    printf("\033[H ");
+    printf("\033[2J ");
+    for (int i = 0; i < MAX_ROWS_COUNT; i++)
+    {
+        for (int j = 0; j < MAX_COLUMNS_COUNT; j++)
+            printf(universeInput[i][j] ? "\033[07m  \033[m" : "  ");
+        puts("");
+    }
+    fflush(stdout);
+}
+
 int main() {
+    Universe u;
+    
+    srand(time(NULL));
+    
+    for (int i = 0; i < MAX_ROWS_COUNT; i++)
+    {
+      for (int j = 0; j < MAX_COLUMNS_COUNT; j++)
+      {
+          int cell = rand() % 2;
+          u[i][j] = cell;
+      }
+    }
+    
+    while (true)
+    {
+      displayUniverse(u);
+      makeLifeProgress(u);
+      usleep(5000);
+    }
+    
    return 0;
 }
